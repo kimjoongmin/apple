@@ -1,24 +1,26 @@
 <template>
-  <!-- 모달 -->
-  <div class="black-bg" v-if="modal == true" @click="modal = false">
+  <!-- 모달 추가 강의 및 닫기 숙제 -->
+  <div class="black-bg" v-if="modalOpen == true" @click="modalOpen = false">
     <div class="white-bg">
       <h3>상세페이지</h3>
       <div>상세페이지 내용</div>
-      <button @click="modal = false">닫기</button>
+      <button @click="modalOpen = false">닫기</button>
     </div>
   </div>
   
   <div class="menu">
     <a href="#" v-for="(a,i) in menuList" :key="i">{{a}}</a>
   </div>
-  <!-- <div v-for="(a,i) in roomList" :key="i">
-    <h3>{{roomList[i]}}</h3>
+  <!-- 신고수 늘리기 강의 및 반복문 -->
+  <div v-for="(a,i) in roomList" :key="i">
+    <img :src="roomImg[i]" class="room-img">
+    <h3 @click="modalOpen=true">{{roomList[i]}}</h3>
     <p>{{priceList[i]}} 만원</p>
     <button @click="increase(i)">허위매물신고</button> <span>신고수 : {{Num[i]}}</span>
-  </div> 반복문으로 작업했으나 이미지 반복이 어려워 실패-->
+  </div> 
   <!-- <div>
     <img src="./assets/room0.jpg" class="room-img">
-    <h3 @click="modal=true">{{roomList[0]}}</h3>
+    <h3 @click="modalOpen=true">{{roomList[0]}}</h3>
     <p>{{priceList[0]}} 만원</p>
     <button @click="Num[0]+=1">허위매물신고</button> <span>신고수 : {{Num[0]}}</span>
   </div>
@@ -34,12 +36,14 @@
     <p>{{priceList[2]}} 만원</p>
     <button @click="Num[2]+=1">허위매물신고</button> <span>신고수 : {{Num[2]}}</span>
   </div> -->
-  <!-- data -->
-  <div>
-    <img src="./assets/room0.jpg" class="room-img">
-    <h3>{{dataRoom[0]}}</h3>
-    <p>{{priceList[0]}} 만원</p>
+  <!-- data export import 강의 및 반복문 -->
+  <div v-for="(a,i) in dataRoom" :key="i">
+    <img :src="dataRoom[i].image" class="room-img">
+    <h3>{{dataRoom[i].title}}</h3>
+    <p>{{dataRoom[i].price}}</p>
+    <p>{{dataRoom[i].content}}</p>
   </div>
+  
 </template>
 
 <script>
@@ -49,20 +53,20 @@ export default {
   name: 'App',
   data() {
     return {
-      modal : false,
+      modalOpen : false,
       menuList: ['Home','Room','About'],
       Num: [1,0,3],
-      //roomImg: ['./assets/room0.jpg','./assets/room1.jpg','./assets/room2.jpg'],
+      roomImg: ['https://codingapple1.github.io/vue/room0.jpg','https://codingapple1.github.io/vue/room1.jpg','https://codingapple1.github.io/vue/room2.jpg'],
       roomList: ['청담동원룸','강남구원룸','도곡동원룸'],
       priceList: ['1000','2000','3000'],
       dataRoom: data
     }
   },
   methods: {
-    // increase(i){
-    //   this.Num[i]+=1;
-    // }
-    increase(){
+    increase(i){
+      this.Num[i]+=1;
+    },
+    increase2(){
       this.Num+=1;
     }
   },
