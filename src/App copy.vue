@@ -54,9 +54,8 @@ import data from './assets/oneroom.js'
 export default {
   name: 'App',
   data() {
-    return {
-      //누른거 
-      target : 0,
+    return {      
+      target : 0,//누른거 
       modalOpen : false,
       menuList: ['Home','Room','About'],
       Num: [1,0,3],
