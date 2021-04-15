@@ -86,7 +86,7 @@ export default {
 }
 .menu{background:#336699;padding:15px;}
 .menu a{color:#fff;padding:10px;}
-.room-img{width:100%;margin-top:50px;}
+.room-img{width:100%;margin-top:50px;max-width:640px;}
 body{margin:0;}
 div{box-sizing: border-box;}
 .black-bg{position:fixed;width:100%;height:100%;padding:20px;background:rgba(0,0,0,0.5);}
