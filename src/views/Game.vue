@@ -62,7 +62,7 @@ export default {
         this.second = Math.ceil(Math.random() * 9);
         this.$refs.cursor.focus();
       }else{
-        this.result = '땡ㅋㅋ 😥';
+        this.result = '땡ㅋㅋ 바보 😥';
         this.value = '';
         this.$refs.cursor.focus();
       }
