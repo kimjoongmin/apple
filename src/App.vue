@@ -1,75 +1,39 @@
 <template>
-
-    <div class="black-bg" v-if="modalopen == true" @click="btnmodalclose"> 
-      <div class="white-bg">
-        <div><img :src="datarooms[modaltarget].image"></div>
-        <h3>{{datarooms[modaltarget].title}}</h3>
-        <p>{{datarooms[modaltarget].content}}</p>
-        <p class="price">{{datarooms[modaltarget].price}}원</p>
-        <button @click="btnmodalclose">닫기</button>
+  <div id="app">
+    <div id="wrap">
+      <Header />
+      <div id="container">
+        <router-view></router-view>
       </div>
+      <Footer />
     </div>
-
-    <div class="menu">
-      <a href="#" v-for="(a,i) in menu" :key="i">{{a}}</a>
-    </div>
-
-    <div class="room-list" v-for="(a,i) in datarooms" :key="i">
-      <a href="#" @click="btnmodalopen(e,i)"><img :src="a.image"></a>
-      <a href="#" @click="btnmodalopen(e,i)" class="title">{{a.title}}</a>
-      <p>{{a.content}}</p>
-      <p class="price">{{a.price}}원</p>
-      <button @click="btnincrease(i)">허위매물신고🚨</button> <span>신고수 : {{datarooms[i].Num}}</span>
-    </div>
-
+  </div>
 </template>
 
 <script>
-import oneroom from './assets/oneroom';
+import Header from './components/layout/Header.vue';
+import Footer from './components/layout/Footer.vue';
 
 export default {
   name: 'app',
-  data(){
-    return{
-      menu: ['Home','About','Rooms'],
-      datarooms : oneroom,
-      modalopen: false,
-      modaltarget: 0,
-    }
-  },
-  methods: {
-    btnmodalopen(e,i){
-      e.preventDefault();
-      this.modalopen = true; 
-      this.modaltarget = i;
-    },
-    btnincrease(i){
-      this.datarooms[i].Num += 100;
-    },
-    btnmodalclose(){
-      this.modalopen = false;
-    }
+  components: {
+    Header,
+    Footer
   },
 }
 </script>
 
 <style>
+body{margin:0;padding:0;}
+#wrap{position:relative;}
+.inner{min-height:500px;}
+h1{padding:200px 0;}
+a{color:#555;text-decoration: none;}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-body{margin:0;padding:0;}
-a{color:#555;text-decoration: none;}
-.menu{padding:20px;background:#336699;border-radius:10px;}
-.menu a{color:#fff;padding:10px;}
-.room-list{margin:50px 0;padding-bottom:50px;border-bottom:1px solid #ddd;}
-.room-list a{display:block;}
-img{width:100%;max-width:500px;}
-.room-list .title{font-weight: bold;font-size:20px;margin:10px 0;}
-.price{font-weight:bold;}
-.black-bg{position:fixed;width:100%;height:100%;background:rgba(0,0,0,0.8);}
-.black-bg .white-bg{background:#fff;padding:50px;position:absolute;left:50%;top:150px;margin-left:-300px;width:600px;box-sizing:border-box;border-radius:10px;}
+};
 </style>
