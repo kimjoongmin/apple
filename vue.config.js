@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath:'/apple'
+    publicPath:'/'
 }
