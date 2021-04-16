@@ -1,7 +1,6 @@
  <template>
     <div class="inner">
-      
-      
+            
       <div class="section">
         <h3>1. 좋아요~</h3>
         <button v-if="like == true" @click="btnlike">Like 👍</button>
