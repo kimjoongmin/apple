@@ -1,16 +1,19 @@
 <template>
     <div>
         <div class="menu">
-            <router-link to="/">Home</router-link>
-            <router-link to="/About">About</router-link>
-            <router-link to="/Rooms">Rooms</router-link>
-            <router-link to="/Game">Game</router-link>
+            <router-link v-for="(a,i) in menu" :key="i" :to="links[i]">{{menu[i]}}</router-link>
         </div>
     </div>
 </template>
 <script>
 export default {
-    name: "Header"
+    name: "Header",
+    data(){
+        return{
+            menu: ['Home','About','Rooms','Game'],
+            links: ['/','/About','/Rooms','/Game'],
+        }
+    },
 }
 </script>
 <style>

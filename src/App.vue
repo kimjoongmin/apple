@@ -22,9 +22,8 @@ export default {
   },
 }
 </script>
-
 <style>
-body{margin:0;padding:0;}
+body{margin:0;padding:0;overflow-y:scroll;}
 #wrap{position:relative;}
 .inner{min-height:500px;}
 h1{padding:200px 0;}

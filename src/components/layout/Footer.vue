@@ -9,6 +9,6 @@ export default {
 }
 </script>
 <style scoped>
-    #footer{border-top:1px solid #ddd;padding:10px 0;}
+    #footer{border-top:1px solid #ddd;padding:10px 0;margin-top:100px;}
     div{text-align:center;color:#ddd;}
 </style>

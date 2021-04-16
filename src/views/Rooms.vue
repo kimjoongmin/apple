@@ -11,8 +11,8 @@
         </div>
 
         <div class="room-list" v-for="(a,i) in datarooms" :key="i">
-            <a href="#" @click="btnmodalopen($event,i)"><img :src="a.image"></a>
-            <a href="#" @click="btnmodalopen(i)" class="title">{{a.title}}</a>
+            <div><a href="#" @click="btnmodalopen($event,i)"><img :src="a.image"></a></div>
+            <div><a href="#" @click="btnmodalopen($event,i)" class="title">{{a.title}}</a></div>
             <p>{{a.content}}</p>
             <p class="price">{{a.price}}원</p>
             <button @click="btnincrease(i)">허위매물신고🚨</button> <span>신고수 : {{datarooms[i].Num}}</span>
@@ -49,7 +49,7 @@ export default {
 
 <style>
 .room-list{padding:50px 0;border-bottom:1px solid #ddd;}
-.room-list a{display:block;}
+.room-list a{display:inline-block;}
 .room-list img{width:100%;max-width:300px;}
 .room-list .title{font-weight: bold;font-size:20px;margin:10px 0;}
 .price{font-weight:bold;}
