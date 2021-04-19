@@ -22,7 +22,7 @@ export default {
         month: 1,
       }
     },
-    watch:{
+    watch:{//데이터 감시
       month(a){//파라미터 작명 (a,b)(변경후데이터,변경전데이터)
         if(isNaN(a) == true){
           alert('숫자만 입력할 수 있습니다');
