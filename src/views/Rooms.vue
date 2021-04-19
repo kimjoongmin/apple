@@ -9,6 +9,14 @@
         <!-- 컴포넌트 데이터 전송 Props :작명(:datarooms)="데이터항목(datarooms)" , custom event @작명(closeModal)="실행함수(btnmodalclose)" @click="$emit('작명(closeModal)')" -->
         <Discount />
 
+        <!-- 데이터 정렬 -->
+        <div class="sortArea right">
+          <button @click="priceSort">가격순정렬</button>
+          <button @click="priceBackSort">가격역순정렬</button>
+          <button @click="wordSort">가나다순정렬</button>
+          <button @click="sortBack">되돌리기</button>
+        </div>
+
         <!-- <Ex :작명이름="오브젝트.name" :작명나이="오브젝트.age" />
         <Ex v-bind="오브젝트" /> 위에껄 아래껄로 줄일 수 있음 -->
 
@@ -41,6 +49,7 @@ export default {
     return{
       //오브젝트 : {name : 'kim', age : 20},//ex
       datarooms : oneroom,
+      originaldatarooms : [...oneroom], //사본만들기 
       modalopen: false,
       modaltarget: 0,
     }
@@ -56,7 +65,25 @@ export default {
     },
     btnmodalclose(){
       this.modalopen = false;
-    }
+    },
+    priceSort(){//가격순정렬
+      this.datarooms.sort(function(a,b){
+        return a.price - b.price
+      });
+    },
+    sortBack(){//되돌리기(복사데이터)
+      this.datarooms = [...this.originaldatarooms];
+    },
+    priceBackSort(){//가격역순정렬
+      this.datarooms.sort(function(a,b){
+        return b.price - a.price
+      });
+    },
+    wordSort(){//가나다순정렬//오름차순
+      this.datarooms.sort(function(a,b){
+        return a.title < b.title ? -1 : a.title > b.title ? 1 : 0;
+      });
+    },    
   },
   components: {
     Discount,
@@ -86,4 +113,7 @@ input.month{width:30px;text-align:right;padding-right:5px;}
 .fade-leave-from{opacity:1;margin-top:0;} /*시작*/
 .fade-leave-active{transition:all 0.5s;}
 .fade-leave-to{opacity:0;margin-top:10px;} /*끝*/
+.sortArea{margin:10px 0;padding:10px 0;border-bottom:1px solid #999;}
+.sortArea.right{text-align:right;}
+.sortArea>button{padding:5px 10px;background:#f8f8f8;border:1px solid #ccc;color:#336699;margin:0 2px;}
 </style>
