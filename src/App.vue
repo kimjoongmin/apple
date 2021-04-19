@@ -34,5 +34,6 @@ a{color:#555;text-decoration: none;}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-};
+}
+input{height:36px;border:1px solid #ddd;margin-right:5px;padding:0 0 0 5px;font-size:14px;border-radius:3px;}
 </style>

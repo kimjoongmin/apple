@@ -10,8 +10,8 @@ export default {
     name: "Header",
     data(){
         return{
-            menu: ['Home','About','Rooms','Game'],
-            links: ['/','/About','/Rooms','/Game'],
+            menu: ['Home','Blog','Rooms','Game'],
+            links: ['/','/Blog','/Rooms','/Game'],
         }
     },
 }

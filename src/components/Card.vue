@@ -27,8 +27,10 @@ export default {
         datarooms: Object,
     },
     methods: {
+        //함수
         openModalSend(){
             this.$emit('openModal', this.datarooms.id);
+            //this 꼭 붙이기, $emit('작명', 데이터)
         },
         increaseSend(){
             this.$emit('increase');

@@ -4,13 +4,13 @@
       <div class="section">
         <h3>1. 좋아요~</h3>
         <button v-if="like == true" @click="btnlike">Like 👍</button>
-        <div  v-else class="like">좋아요 했습니다 <button @click="btncancel">취소 😎</button></div>
+        <div v-else class="like">좋아요 했습니다 <button @click="btncancel">취소 😎</button></div>
       </div>
       
       <div class="section">
         <h3>2. 구구단!!</h3>
         <div class="problem"><span class="first">{{first}}</span>곱하기 <span class="second">{{second}}</span>는?</div>
-        <form @submit="btn99submit($event)">
+        <form @submit="btn99submit()">
           <input type="text" v-model="value" ref="cursor">
           <button type="submit">입력!!</button>
         </form>
@@ -20,7 +20,7 @@
       <div class="section">
         <h3>3. 끝말잇기!</h3>
         <div class="word">{{word}}</div>
-        <form @submit="btnwordsubmit($event)">
+        <form @submit="btnwordsubmit()">
           <input type="text" v-model="wordvalue" ref="cursor2">
           <button type="submit">입력!!</button>
         </form>
@@ -52,7 +52,7 @@ export default {
     btncancel(){
       this.like = true;
     },
-    btn99submit(event){
+    btn99submit(){
       event.preventDefault();
       if(this.first*this.second===parseInt(this.value)){
         this.result = '올~ 딩동댕 😊';
@@ -66,10 +66,10 @@ export default {
         this.$refs.cursor.focus();
       }
     },
-    btnwordsubmit(event){
+    btnwordsubmit(){
       event.preventDefault();
       var endword =  this.word[this.word.length - 1];
-      if(this.word[this.word.length - 1] == this.wordvalue[0]){
+      if(endword == this.wordvalue[0]){
         this.word = this.wordvalue;
         this.wordresult = '딩동댕 😊';
         this.wordvalue = '';
@@ -90,7 +90,6 @@ export default {
 .problem span{font-size:30px;margin-right:5px;}
 .first{color:red}
 .second{color:blue;margin-left:10px;}
-input{height:36px;border:1px solid #ddd;margin-right:5px;padding:0 0 0 5px;font-size:14px;border-radius:3px;}
 button{background:#f2f2f2;border:1px solid #bbb;box-sizing:border-box;height:38px;line-height:33px;font-size:14px;border-radius:3px;}
 .result{margin:10px 0;font-size:50px;font-weight:bold;}
 .word{font-size:40px;color:#555;font-weight:bold;margin-bottom:10px;}
