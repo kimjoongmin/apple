@@ -1,15 +1,15 @@
 <template>
     <div class="inner">
 
-        <!-- 컴포넌트 후 부모 자식간의 Props  -->
-        <Modal :datarooms="datarooms" :modalopen="modalopen" :modaltarget="modaltarget" />
+        <!-- 컴포넌트 후 부모 자식간의 Props 및 custom event -->
+        <Modal :datarooms="datarooms" :modalopen="modalopen" :modaltarget="modaltarget" @closeModal="btnmodalclose" />
 
         <Discount />
 
         <!-- <Ex :작명이름="오브젝트.name" :작명나이="오브젝트.age" />
         <Ex v-bind="오브젝트" /> 위에껄 아래껄로 줄일 수 있음 -->
 
-        <!-- 원래 리스트 반복문 컴포넌트 때문에 주석함 
+        <!-- 원래 리스트 반복문 컴포넌트 때문에 주석함
         <div class="room-list" v-for="(a,i) in datarooms" :key="i">
             <div><a href="#" @click="btnmodalopen($event,i)"><img :src="a.image"></a></div>
             <div><a href="#" @click="btnmodalopen($event,i)" class="title">{{a.title}}</a></div>
@@ -18,11 +18,11 @@
             <button @click="btnincrease(i)">허위매물신고🚨</button> <span>신고수 : {{datarooms[i].Num}}</span>
         </div>-->
 
-        <!-- 원룸 리스트 컴포넌트화 -->
-        <!-- 자식에 반복문을 넣어놨을 경우-->
-        <Card :datarooms="datarooms" />
+        <!-- 원룸 리스트 컴포넌트화 Props 및 custom event-->
+        <!-- 자식에 반복문을 넣어놨을 경우
+        <Card :datarooms="datarooms" />-->
         <!-- 자식에서 반복문 안썼을 경우 -->
-        <!-- <Card :datarooms="datarooms[i]" v-for="(a,i) in datarooms" :key="i"/> -->
+        <Card :datarooms="datarooms[i]" v-for="(a,i) in datarooms" :key="i" @openModal="btnmodalopen(i)" @increase="btnincrease(i)" />
 
     </div>
 </template>
@@ -43,13 +43,13 @@ export default {
     }
   },
   methods: {
-    btnmodalopen(event,i){
+    btnmodalopen(i){
       event.preventDefault();
       this.modalopen = true; 
       this.modaltarget = i;
     },
     btnincrease(i){
-      this.datarooms[i].Num += 100;
+      this.datarooms[i].Num += 10;
     },
     btnmodalclose(){
       this.modalopen = false;

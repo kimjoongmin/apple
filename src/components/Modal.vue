@@ -6,7 +6,7 @@
             <h3>{{datarooms[modaltarget].title}}</h3>
             <p>{{datarooms[modaltarget].content}}</p>
             <p class="price">{{datarooms[modaltarget].price}}원</p>
-            <!-- <button @click="btnmodalclose">닫기</button> -->
+            <button @click="$emit('closeModal')">닫기</button>
         </div>
     </div>
   </div>
