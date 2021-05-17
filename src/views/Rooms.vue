@@ -7,7 +7,8 @@
         </transition>
         <!-- </div> -->
         <!-- 컴포넌트 데이터 전송 Props :작명(:datarooms)="데이터항목(datarooms)" , custom event @작명(closeModal)="실행함수(btnmodalclose)" @click="$emit('작명(closeModal)')" -->
-        <Discount />
+
+        <Discount v-if="showDiscount == true" />
 
         <!-- 데이터 정렬 -->
         <div class="sortArea right">
@@ -43,10 +44,12 @@ import Discount from '../components/Discount';
 import Modal from '../components/Modal';
 import Card from '../components/Card';
 
+
 export default {
   name: 'Home',
   data(){
     return{
+      showDiscount : true,
       //오브젝트 : {name : 'kim', age : 20},//ex
       datarooms : oneroom,
       originaldatarooms : [...oneroom], //사본만들기 
@@ -85,6 +88,14 @@ export default {
       });
     },    
   },
+  created(){//html생성전 데이터만 있을때~
+
+  },
+  // mounted(){//메인페이지가 마운트 됐을때 2초 후에 사라지게~ lifecycle Hook
+  //   setTimeout(()=>{
+  //     this.showDiscount = false;
+  //   }, 2000);
+  // },
   components: {
     Discount,
     Modal,

@@ -40,6 +40,12 @@ export default {
       //작명: 문자열(String)
       //작명: Object
     },
+    updated() {//lifecycle hook
+      if(this.month == 2){
+        alert('숙제완료!!');
+        this.month = 12;//2개월은 안팜 12개월부터
+      }       
+    },
 }
 </script>
 
