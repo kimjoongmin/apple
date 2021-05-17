@@ -46,7 +46,7 @@ import Card from '../components/Card';
 
 
 export default {
-  name: 'Home',
+  name: 'Rooms',
   data(){
     return{
       showDiscount : true,
