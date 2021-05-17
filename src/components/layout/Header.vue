@@ -11,7 +11,7 @@ export default {
     data(){
         return{
             menu: ['Home','Blog','Rooms','Game'],
-            links: ['/','/Blog','/Rooms','/Game'],
+            links: ['/apple','/apple/Blog','/apple/Rooms','/apple/Game'],
         }
     },
 }
